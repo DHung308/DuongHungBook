@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "rbbBDA09gRDOxJPAEFoDVinqlgSXdCblOwqUHXZpFC0TmfAtIy3YeTdsZ7gAmxFCWdZW1iyYxiU1GlHY/GGoOw==",
+  "dgSpecHash": "UOM0gpoAjxSHbsIijGPmwTGuE+48nStnEfYq/VjNACIToIvdi/yXse4DsHpmvBdDYpOkohHxc0we9tNJfY2ZNw==",
   "success": true,
   "projectFilePath": "E:\\DHungBooks\\DHungBooks\\DHungBooks.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\nguye\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\aspnetcorehero.toastnotification.1.1.0.nupkg.sha512",
     "C:\\Users\\nguye\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\nguye\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\nguye\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",

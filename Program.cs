@@ -1,11 +1,14 @@
+using AspNetCoreHero.ToastNotification;
+using DHungBooks.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<DHungBooksContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DHungBooksContext") ?? throw new InvalidOperationException("Connection string 'DHungBooksContext' not found.")));
+builder.Services.AddDbContext<NguyenDuongHungBookContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("NguyenDuongHungBookContext") ?? throw new InvalidOperationException("Connection string 'DHungBooksContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddNotyf(config => { config.DurationInSeconds = 10; config.IsDismissable = true; config.Position = NotyfPosition.BottomRight; });
 
 var app = builder.Build();
 
