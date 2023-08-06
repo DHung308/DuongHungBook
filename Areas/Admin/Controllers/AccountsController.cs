@@ -23,6 +23,13 @@ namespace DHungBooks.Areas.Admin.Controllers
         // GET: Admin/Accounts
         public async Task<IActionResult> Index()
         {
+            ViewData["RoleId"] = new SelectList(_context.Roles, "RoleId", "RoleName");
+            
+            List<SelectListItem> IsTrangThai = new List<SelectListItem>();
+            IsTrangThai.Add(new SelectListItem() { Text = "Khả dụng", Value = "1" });
+            IsTrangThai.Add(new SelectListItem() { Text = "Vô hiệu hóa", Value = "0" });
+            ViewData["IsTrangThai"] = IsTrangThai;
+
             var nguyenDuongHungBookContext = _context.Accounts.Include(a => a.Role);
             return View(await nguyenDuongHungBookContext.ToListAsync());
         }
@@ -49,7 +56,7 @@ namespace DHungBooks.Areas.Admin.Controllers
         // GET: Admin/Accounts/Create
         public IActionResult Create()
         {
-            ViewData["RoleId"] = new SelectList(_context.Roles, "RoleId", "RoleId");
+            ViewData["RoleId"] = new SelectList(_context.Roles, "RoleId", "RoleName");
             return View();
         }
 
@@ -66,7 +73,7 @@ namespace DHungBooks.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RoleId"] = new SelectList(_context.Roles, "RoleId", "RoleId", account.RoleId);
+            ViewData["RoleId"] = new SelectList(_context.Roles, "RoleId", "RoleName", account.RoleId);
             return View(account);
         }
 

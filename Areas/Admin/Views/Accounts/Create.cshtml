@@ -5,21 +5,26 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Create</h1>
 
-<h4>Account</h4>
+
+<h4>Tạo tài khoản</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Phone" class="control-label"></label>
+                <label asp-for="FullName" class="control-label">Họ tên</label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label">Số điện thoại</label>
                 <input asp-for="Phone" class="form-control" />
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
+                <label asp-for="Password" class="control-label">Mật khẩu</label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
@@ -30,16 +35,11 @@
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Active" /> @Html.DisplayNameFor(model => model.Active)
+                    <input class="form-check-input" asp-for="Active" /> Trạng thái
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="FullName" class="control-label"></label>
-                <input asp-for="FullName" class="form-control" />
-                <span asp-validation-for="FullName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RoleId" class="control-label"></label>
+                <label asp-for="RoleId" class="control-label">Vai trò</label>
                 <select asp-for="RoleId" class ="form-control" asp-items="ViewBag.RoleId"></select>
             </div>
             <div class="form-group">
@@ -50,6 +50,6 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Quay lại</a>
 </div>
 
