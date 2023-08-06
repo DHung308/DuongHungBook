@@ -5,25 +5,23 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 <div class="page-header">
-    <h2 class="header-title">Vai trò</h2>
+    <h2 class="header-title">Vai trò tài khoản</h2>
     <div class="header-sub-title">
         <nav class="breadcrumb breadcrumb-dash">
             <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item">
                 <i class="anticon anticon-home m-r-5"></i>Home
             </a>
-            <a class="breadcrumb-item" href="#">Tables</a>
+            <a class="breadcrumb-item" href="#">Hệ thống</a>
             <a asp-area="Admin" asp-controller="Roles" asp-action="Index" class="breadcrumb-item">
-                <i class="breadcrumb-item active"></i>Vai trò
+                <i class="breadcrumb-item active"></i>Vai trò tài khoản
             </a>
             
         </nav>
     </div>
 </div>
 
-<h1>Vai trò</h1>
-
 <p>
-    <a asp-action="Create">Tạo mới</a>
+    <a asp-action="Create" class="btn btn-primary btn-tone m-r-5">Tạo mới</a>
 </p>
 <table class="table">
     <thead>
@@ -53,9 +51,9 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                    <a asp-action="Edit" asp-route-id="@item.RoleId" class="btn btn-warning btn-tone m-r-5">Sửa</a>
-                    <a asp-action="Details" asp-route-id="@item.RoleId" class="btn btn-info btn-tone m-r-5">Xem</a> 
-                    <a asp-action="Delete" asp-route-id="@item.RoleId" class="btn btn-danger btn-tone m-r-5">Xóa</a>
+                    <a asp-action="Edit" asp-route-id="@item.RoleId" class="btn btn-warning m-r-5">Sửa</a> 
+                    <a asp-action="Details" asp-route-id="@item.RoleId" class="btn btn-info m-r-5">Xem</a> 
+                    <a asp-action="Delete" asp-route-id="@item.RoleId" class="btn btn-danger m-r-5">Xóa</a>
             </td>
         </tr>
 }

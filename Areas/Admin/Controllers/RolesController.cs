@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DHungBooks.Data;
 using DHungBooks.Models;
+using DHungBooks.Models.Process;
 
 namespace DHungBooks.Areas.Admin.Controllers
 {
@@ -14,10 +15,12 @@ namespace DHungBooks.Areas.Admin.Controllers
     public class RolesController : Controller
     {
         private readonly NguyenDuongHungBookContext _context;
+        private readonly StringProcess _StringProcess;
 
         public RolesController(NguyenDuongHungBookContext context)
         {
             _context = context;
+            _StringProcess = new StringProcess();
         }
 
         // GET: Admin/Roles
@@ -51,6 +54,8 @@ namespace DHungBooks.Areas.Admin.Controllers
         {
             return View();
         }
+
+
 
         // POST: Admin/Roles/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.

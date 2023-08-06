@@ -5,20 +5,18 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Details</h1>
-
 <div>
-    <h4>Role</h4>
+    <h4>Thông tin</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RoleName)
+            Vai trò
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.RoleName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
+            Mô tả
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Description)
@@ -26,6 +24,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.RoleId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.RoleId" class="btn btn-warning btn-tone m-r-5">Sửa</a>
+    <a asp-action="Index" class="btn btn-primary btn-tone m-r-5">Quay lại</a>
 </div>
