@@ -7,101 +7,94 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DHungBooks.Data;
 using DHungBooks.Models;
-using DHungBooks.Models.Process;
-using AspNetCoreHero.ToastNotification.Abstractions;
-using AspNetCoreHero.ToastNotification.Notyf;
 
 namespace DHungBooks.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class RolesController : Controller
+    public class AccountsController : Controller
     {
         private readonly NguyenDuongHungBookContext _context;
-        private readonly StringProcess _StringProcess;
-        public INotyfService _notifyService { get; }
 
-        public RolesController(NguyenDuongHungBookContext context, INotyfService notifyService)
+        public AccountsController(NguyenDuongHungBookContext context)
         {
             _context = context;
-            _StringProcess = new StringProcess();
-            _notifyService = notifyService;
         }
 
-        // GET: Admin/Roles
+        // GET: Admin/Accounts
         public async Task<IActionResult> Index()
         {
-              return _context.Roles != null ? 
-                          View(await _context.Roles.ToListAsync()) :
-                          Problem("Entity set 'NguyenDuongHungBookContext.Roles'  is null.");
+            var nguyenDuongHungBookContext = _context.Accounts.Include(a => a.Role);
+            return View(await nguyenDuongHungBookContext.ToListAsync());
         }
 
-        // GET: Admin/Roles/Details/5
+        // GET: Admin/Accounts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Roles == null)
+            if (id == null || _context.Accounts == null)
             {
                 return NotFound();
             }
 
-            var role = await _context.Roles
-                .FirstOrDefaultAsync(m => m.RoleId == id);
-            if (role == null)
+            var account = await _context.Accounts
+                .Include(a => a.Role)
+                .FirstOrDefaultAsync(m => m.AccountId == id);
+            if (account == null)
             {
                 return NotFound();
             }
 
-            return View(role);
+            return View(account);
         }
 
-        // GET: Admin/Roles/Create
+        // GET: Admin/Accounts/Create
         public IActionResult Create()
         {
+            ViewData["RoleId"] = new SelectList(_context.Roles, "RoleId", "RoleId");
             return View();
         }
 
-
-
-        // POST: Admin/Roles/Create
+        // POST: Admin/Accounts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RoleId,RoleName,Description")] Role role)
+        public async Task<IActionResult> Create([Bind("AccountId,Phone,Password,Salt,Active,FullName,RoleId")] Account account)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(role);
+                _context.Add(account);
                 await _context.SaveChangesAsync();
-                _notifyService.Success("Tạo mới thành công");
                 return RedirectToAction(nameof(Index));
             }
-            return View(role);
+            ViewData["RoleId"] = new SelectList(_context.Roles, "RoleId", "RoleId", account.RoleId);
+            return View(account);
         }
 
-        // GET: Admin/Roles/Edit/5
+        // GET: Admin/Accounts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Roles == null)
+            if (id == null || _context.Accounts == null)
             {
                 return NotFound();
             }
 
-            var role = await _context.Roles.FindAsync(id);
-            if (role == null)
+            var account = await _context.Accounts.FindAsync(id);
+            if (account == null)
             {
                 return NotFound();
             }
-            return View(role);
+            ViewData["RoleId"] = new SelectList(_context.Roles, "RoleId", "RoleId", account.RoleId);
+            return View(account);
         }
 
-        // POST: Admin/Roles/Edit/5
+        // POST: Admin/Accounts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RoleId,RoleName,Description")] Role role)
+        public async Task<IActionResult> Edit(int id, [Bind("AccountId,Phone,Password,Salt,Active,FullName,RoleId")] Account account)
         {
-            if (id != role.RoleId)
+            if (id != account.AccountId)
             {
                 return NotFound();
             }
@@ -110,13 +103,12 @@ namespace DHungBooks.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(role);
+                    _context.Update(account);
                     await _context.SaveChangesAsync();
-                    _notifyService.Success("Cập nhật thành công");
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RoleExists(role.RoleId))
+                    if (!AccountExists(account.AccountId))
                     {
                         return NotFound();
                     }
@@ -127,50 +119,51 @@ namespace DHungBooks.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(role);
+            ViewData["RoleId"] = new SelectList(_context.Roles, "RoleId", "RoleId", account.RoleId);
+            return View(account);
         }
 
-        // GET: Admin/Roles/Delete/5
+        // GET: Admin/Accounts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Roles == null)
+            if (id == null || _context.Accounts == null)
             {
                 return NotFound();
             }
 
-            var role = await _context.Roles
-                .FirstOrDefaultAsync(m => m.RoleId == id);
-            if (role == null)
+            var account = await _context.Accounts
+                .Include(a => a.Role)
+                .FirstOrDefaultAsync(m => m.AccountId == id);
+            if (account == null)
             {
                 return NotFound();
             }
 
-            return View(role);
+            return View(account);
         }
 
-        // POST: Admin/Roles/Delete/5
+        // POST: Admin/Accounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Roles == null)
+            if (_context.Accounts == null)
             {
-                return Problem("Entity set 'NguyenDuongHungBookContext.Roles'  is null.");
+                return Problem("Entity set 'NguyenDuongHungBookContext.Accounts'  is null.");
             }
-            var role = await _context.Roles.FindAsync(id);
-            if (role != null)
+            var account = await _context.Accounts.FindAsync(id);
+            if (account != null)
             {
-                _context.Roles.Remove(role);
+                _context.Accounts.Remove(account);
             }
             
             await _context.SaveChangesAsync();
-            _notifyService.Success("Xóa thành công");
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RoleExists(int id)
+        private bool AccountExists(int id)
         {
-          return (_context.Roles?.Any(e => e.RoleId == id)).GetValueOrDefault();
+          return (_context.Accounts?.Any(e => e.AccountId == id)).GetValueOrDefault();
         }
     }
 }
