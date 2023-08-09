@@ -553,3 +553,5 @@ E:\DHungBooks\DHungBooks\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.Razor.Runtime
 E:\DHungBooks\DHungBooks\obj\Debug\net7.0\scopedcss\Areas\Admin\Views\Shared\_AdminLayout.cshtml.rz.scp.css
 E:\DHungBooks\DHungBooks\bin\Debug\net7.0\AspNetCoreHero.ToastNotification.Views.dll
 E:\DHungBooks\DHungBooks\bin\Debug\net7.0\AspNetCoreHero.ToastNotification.dll
+E:\DHungBooks\DHungBooks\bin\Debug\net7.0\PagedList.Core.dll
+E:\DHungBooks\DHungBooks\bin\Debug\net7.0\PagedList.Core.Mvc.dll

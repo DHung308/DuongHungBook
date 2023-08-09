@@ -1,0 +1,116 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<DHungBooks.Models.Customer>
+@{
+        int CurrentPage = ViewBag.CurrentPage;
+        ViewData["Title"] = "Danh sách khách hàng" + CurrentPage;
+        Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h2 class="header-title">Danh sách khách hàng</h2>
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item">
+                <i class="anticon anticon-home m-r-5"></i>Home
+            </a>
+            <a class="breadcrumb-item" href="#">Hệ thống</a>
+            <a asp-area="Admin" asp-controller="Accounts" asp-action="Index" class="breadcrumb-item">
+                    <i class="breadcrumb-item active"></i>Danh sách khách hàng : trang @CurrentPage
+            </a>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="row m-b-10">
+            <div class="col-lg-8">
+                <div class="d-md-flex">
+                    <div class="m-b-10 m-r-15">
+                        <select class="custom-select" id="IdRole" name="IdRole" style="min-width: 180px;" asp-items="ViewBag.RoleID">
+                            <option value="0" disabled selected>Quyền truy cập</option>
+                        </select>
+                    </div>
+                    <div class="m-b-10">
+                        <select class="custom-select" id="IdStatus" name="IdStatus" style="min-width: 180px;" asp-items="ViewBag.IsTrangThai">
+                            <option value="0" disabled selected>Trạng thái</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-right">
+                <a asp-action="Create" class="btn btn-primary m-r-5">Tạo mới</a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover e-commerce-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th> Tên </th>
+                        <th>Số điện thoại</th>
+                        <th>Email </th>
+                        <th>Địa chỉ</th>
+                        <th>Sinh nhật</th>
+                        <th>Trạng thái</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.CustomerId
+                            </td>
+                            <td>
+                                @item.FullName
+                            </td>
+                            <td>
+                                @item.Phone
+                            </td>
+                            <td>
+                                @item.Email
+                            </td>
+                            <td>
+                                @item.Address
+                            </td>
+                            <td>
+                                @item.Birthday
+                            </td>
+                            <td>
+                                @if (item.Active)
+                                {
+                                    <div class="d-flex align-items-center">
+                                        <div class="badge badge-success badge-dot m-r-10"></div>
+                                        <div>Khả dụng</div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="d-flex align-items-center">
+                                        <div class="badge badge-danger badge-dot m-r-10"></div>
+                                        <div>Vô hiệu hóa</div>
+                                    </div>
+                                }
+                            </td>
+                            <td class="text-right">
+                                <button class="btn btn-icon btn-hover">
+                                    <a asp-action="Edit" asp-route-id="@item.CustomerId" class="anticon anticon-edit"></a>
+                                </button>
+                                <button class="btn btn-icon btn-hover">
+                                    <a asp-action="Delete" asp-route-id="@item.CustomerId" class="anticon anticon-delete"></a>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div aria-label="Page navigation example">
+                <ul class=" pagination">
+                    <pager class="pager-container" list ="@Model" asp-area="Admin" asp-controller="Customers" asp-action="Index" />
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
