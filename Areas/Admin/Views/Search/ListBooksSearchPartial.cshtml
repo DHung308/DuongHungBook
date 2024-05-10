@@ -1,0 +1,56 @@
+﻿@using DHungBooks.Models
+@model List<Book>
+
+@if (Model != null)
+{
+	foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@item.BookId
+			</td>
+			<td>
+				@item.BookName
+			</td>
+			<td>
+				@item.Ca.CaName
+			</td>
+			<td>
+				@item.Price.Value.ToString("#,##0") VNĐ
+			</td>
+			<td>
+				@item.UnitslnStock
+			</td>
+			<td>
+				@if (item.UnitslnStock.Value > 0)
+				{
+					<div class="d-flex align-items-center">
+						<div class="badge badge-success badge-dot m-r-10"></div>
+						<div>Còn sách</div>
+					</div>
+				}
+				else
+				{
+					<div class="d-flex align-items-center">
+						<div class="badge badge-danger badge-dot m-r-10"></div>
+						<div>Hết sách</div>
+					</div>
+				}
+
+			</td>
+
+			<td class="text-right">
+				<a class="btn btn-icon btn-hover btn-sm btn-rounded" asp-area="Admin" asp-controller="Books" asp-action="Delete" asp-route-id="@item.BookId">
+					<i class="anticon anticon-delete"></i>
+				</a>
+				<a class="btn btn-icon btn-hover btn-sm btn-rounded pull-right" asp-area="Admin" asp-controller="Books" asp-action="Edit" asp-route-id="@item.BookId">
+					<i class="anticon anticon-edit"></i>
+				</a>
+				<a class="btn btn-icon btn-hover btn-sm btn-rounded pull-right" asp-area="Admin" asp-controller="Books" asp-action="Details" asp-route-id="@item.BookId">
+					<i class="fa fa-eye"></i>
+				</a>
+			</td>
+		</tr>
+
+	}
+}

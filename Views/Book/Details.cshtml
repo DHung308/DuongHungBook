@@ -1,0 +1,154 @@
+﻿@model DHungBooks.Models.Book
+
+@{
+    ViewData["Title"] = "Title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Book> lsProducts = ViewBag.SanPham;
+}
+<section class="bg-sand padding-large">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<a href="~/images/products/@Model.Thumb" class="product-image"><img src="~/images/Book/@Model.Thumb"></a>
+			</div>
+            <div class="row">
+                <div class="col-md-6 pl-5">
+                    <div class="product-detail">
+                        <h1>@Model.BookName</h1>
+                        <div class="price-box pb-1">
+                            <span class="new-price text-danger font-weight-bold" style="font-size: 24px;">@Model.Price.Value.ToString("#,##0") VNĐ</span>
+                        </div>
+
+                        <p>
+                            @Model.Description
+                        </p>
+                        <div class="quantity-form">
+                            <button type="button" class="btn-quantity btn-minus">-</button>
+                            <input type="number" id="quantity" name="quantity" class="form-control" value="1" min="1">
+                            <button type="button" class="btn-quantity btn-plus">+</button>
+                        </div>
+                        <input type="hidden" name="productId" value="@Model.BookId">
+                        <button type="submit" name="add-to-cart" value="27545" class="button btn-buy">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 pl-5">
+                    <div class="product-category text-matterhorn pb-2">
+                        <span class="title">DANH MỤC :</span>
+                        <ul class="category-list">
+                            <li>
+                                <a href="/@Model.Ca.Alias">@Model.Ca.CaName</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</section>
+
+<style>
+    .quantity-form {
+        display: flex;
+        align-items: center;
+    }
+
+    .btn-quantity {
+        width: 30px;
+        height: 30px;
+        border: none;
+        cursor: pointer;
+        color: white;
+    }
+    .btn-minus {
+        background-color: #C5A992;
+    }
+
+    .btn-plus {
+        background-color: #C5A992;
+    }
+
+    #quantity {
+        width: 50px;
+        margin: 0 10px;
+        text-align: center;
+    }
+
+    .product-category {
+        display: flex;
+        align-items: center;
+    }
+
+    .title {
+        margin-right: 10px;
+    }
+
+    .category-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .product-category {
+        display: flex;
+        align-items: center;
+    }
+
+    .title {
+        margin-right: 10px;
+    }
+
+    .category-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .category-list li {
+            margin-right: 10px;
+        }
+
+            .category-list li a {
+                color: #333;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+                .category-list li a:hover {
+                    color: #007bff;
+                }
+
+    .button.btn-buy {
+        background-color: #C5A992; /* Màu nền ban đầu */
+        color: #fff; /* Màu chữ ban đầu */
+        transition: background-color 0.3s, color 0.3s; /* Hiệu ứng transition */
+    }
+
+        .button.btn-buy:hover {
+            background-color: #C5A992; /* Màu nền khi di chuột vào */
+            color: #fff; /* Màu chữ khi di chuột vào */
+            transform: scale(1.1); /* Hiệu ứng phóng to khi di chuột vào */
+        }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const quantityInput = document.getElementById('quantity');
+        const decreaseBtn = document.querySelector('.btn-minus');
+        const increaseBtn = document.querySelector('.btn-plus');
+
+        decreaseBtn.addEventListener('click', function () {
+            const currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+
+        increaseBtn.addEventListener('click', function () {
+            const currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+        });
+    });
+</script>
+

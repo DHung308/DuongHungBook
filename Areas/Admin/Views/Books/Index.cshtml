@@ -2,112 +2,182 @@
 @model PagedList.Core.IPagedList<DHungBooks.Models.Book>
 @{
     int CurrentPage = ViewBag.CurrentPage;
-    ViewData["Title"] = "Danh sách khách hàng" + CurrentPage;
+    ViewData["Title"] = "Danh sách sản phẩm" + CurrentPage;
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="page-header">
-    <h2 class="header-title">Danh sách sản phẩm</h2>
-    <div class="header-sub-title">
-        <nav class="breadcrumb breadcrumb-dash">
-            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item">
-                <i class="anticon anticon-home m-r-5"></i>Home
-            </a>
-            <a class="breadcrumb-item" href="#">Quản lý sản phẩm</a>
-            <a asp-area="Admin" asp-controller="Accounts" asp-action="Index" class="breadcrumb-item">
-                <i class="breadcrumb-item active"></i>Danh sách sản phẩm : trang @CurrentPage
-            </a>
-        </nav>
-    </div>
+	<div class="header-sub-title">
+		<nav class="breadcrumb breadcrumb-dash">
+			<a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+			<span class="breadcrumb-item active">Danh sách sản phẩm: Trang  @CurrentPage</span>
+		</nav>
+	</div>
 </div>
 <div class="card">
-    <div class="card-body">
-        <div class="row m-b-10">
-            <div class="col-lg-8">
-                <div class="d-md-flex">
-                    <div class="m-b-10 m-r-15">
-                        <select class="custom-select" id="CaId" name="CaId" style="min-width: 230px;" asp-items="ViewBag.CaId">
-                            <option disabled selected>Danh mục</option>
-                            <option value="all">Tất cả</option>
-                        </select>
-                    </div>
-                    <div class="m-b-10">
-                        <select class="custom-select" id="IdStatus" name="IdStatus" style="min-width: 180px;" asp-items="ViewBag.IsTrangThai">
-                            <option value="0" disabled selected>Trạng thái</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 text-right">
-                <a asp-action="Create" class="btn btn-primary m-r-5">Tạo mới</a>
-            </div>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-hover e-commerce-table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th> Tên sách </th>
-                        <th>Danh mục</th>
-                        <th>Giá </th>
-                        <th>Tồn kho</th>
-                        <th>Trạng thái</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @item.BookId
-                            </td>
-                            <td>
-                                @item.BookName
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Ca.CaName)
-                            </td>
-                            <td>
-                                @item.Price.Value.ToString("#,##0") VNĐ
-                            </td>
-                            <td>
-                                @item.UnitslnStock
-                            </td>
-                            <td>
-                                @if (item.Active)
-                                {
-                                    <div class="d-flex align-items-center">
-                                        <div class="badge badge-success badge-dot m-r-10"></div>
-                                        <div>Còn hàng</div>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="d-flex align-items-center">
-                                        <div class="badge badge-danger badge-dot m-r-10"></div>
-                                        <div>Bán hết</div>
-                                    </div>
-                                }
-                            </td>
-                            <td class="text-right">
-                                <button class="btn btn-icon btn-hover">
-                                    <a asp-action="Edit" asp-route-id="@item.BookId" class="anticon anticon-edit"></a>
-                                </button>
-                                <button class="btn btn-icon btn-hover">
-                                    <a asp-action="Delete" asp-route-id="@item.BookId" class="anticon anticon-delete"></a>
-                                </button>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-            <div aria-label="Page navigation example">
-                <ul class=" pagination">
-                    <pager class="pager-container" list="@Model" asp-area="Admin" asp-controller="Books" asp-action="Index" />
-                </ul>
+	<div class="card-body">
+		<div class="row m-b-30">
+			<div class="col-md-8">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-affix m-v-10">
+							<i class="prefix-icon anticon anticon-search opacity-04"></i>
+							<input id="keyword" name="keyword" type="text" class="form-control" placeholder="Tìm kiếm sản phẩm">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input-affix m-v-10">
+							<select class="custom-select" id="txtCatID" name="txtID" style="min-width: 180px;" asp-items="ViewBag.DanhMuc">
+								<option value="all">Tất cả</option>
+							</select>
+						</div>
+					</div>
+				</div>
 
-            </div>
-        </div>
-    </div>
+			</div>
+
+			<div class="col-lg-4 text-right">
+				<a class="btn btn-primary" asp-area="Admin" asp-controller="Books" asp-action="Create">
+					<i class="anticon anticon-plus-circle m-r-5"></i>
+					<span>Thêm mới</span>
+				</a>
+			</div>
+		</div>
+		<div class="table-responsive">
+
+			<table class="table table-hover e-commerce-table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Tên sách</th>
+						<th>Danh mục</th>
+						<th>Giá</th>
+						<th>Tồn kho</th>
+						<th>Trạng thái</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody id="records_table">
+					@if (Model != null)
+					{
+						foreach (var item in Model)
+						{
+							<tr>
+								<td>
+									@item.BookId
+								</td>
+								<td>
+									@item.BookName
+								</td>
+								<td>
+									@item.Ca.CaName
+								</td>
+								<td>
+									@{
+										if (item.Price.HasValue)
+										{
+										<td>@item.Price.Value.ToString("#,##0") VNĐ</td>
+										}
+										else
+										{
+										<td>Giá không xác định</td>
+										}
+									}
+								</td>
+								<td>
+									@item.UnitslnStock
+								</td>
+								<td>
+									@if (item.UnitslnStock.HasValue && item.UnitslnStock.Value > 0)
+									{
+										<div class="d-flex align-items-center">
+											<div class="badge badge-success badge-dot m-r-10"></div>
+											<div>Còn sách</div>
+										</div>
+									}
+									else
+									{
+										<div class="d-flex align-items-center">
+											<div class="badge badge-danger badge-dot m-r-10"></div>
+											<div>Hết sách</div>
+										</div>
+									}
+								</td>
+
+								<td class="text-right">
+									<a class="btn btn-icon btn-hover btn-sm btn-rounded" asp-area="Admin" asp-controller="Books" asp-action="Delete" asp-route-id="@item.BookId">
+										<i class="anticon anticon-delete"></i>
+									</a>
+									<a class="btn btn-icon btn-hover btn-sm btn-rounded pull-right" asp-area="Admin" asp-controller="Books" asp-action="Edit" asp-route-id="@item.BookId">
+										<i class="anticon anticon-edit"></i>
+									</a>
+									<a class="btn btn-icon btn-hover btn-sm btn-rounded pull-right" asp-area="Admin" asp-controller="Books" asp-action="Details" asp-route-id="@item.BookId">
+										<i class="fa fa-eye"></i>
+									</a>
+								</td>
+							</tr>
+
+						}
+					}
+				</tbody>
+			</table>
+			<div style="position: absolute; right: 0;">
+				<div style="right:0" aria-label="Page navigation example">
+					<ul class="pagination">
+						<pager class="page-container" list="@Model" asp-area="Admin" asp-controller="Books" asp-route-CatID="@ViewBag.CurrentCatID" asp-action="Index">
+						</pager>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            jQuery("#txtCatID").change(function () {
+                var CaId = jQuery(this).children(":selected").attr("value");
+                CaId = parseFloat(CaId);
+                $('#txtCatID option')
+                    .removeAttr('selected');
+                $("#txtCatID> [value=" + CaId + "]").attr("selected", "true");
+
+                $.ajax({
+                    url: '/Admin/Books/Filtter',
+                    datatype: "json",
+                    type: "GET",
+                    data: {
+                        CatID: CaId
+                    },
+                    async: true,
+                    success: function (results) {
+                        if (results.status == "success") {
+                            window.location.href = results.redirectUrl;
+                        }
+                    },
+                    error: function (xhr) {
+                        alert('error');
+                    }
+                });
+			});
+		});
+		$("#keyword").on("input", function () {
+			var keyword = $(this).val();
+			console.log('Keyword:', keyword); // Log the keyword to verify it's getting the input correctly
+
+			$.ajax({
+				url: '@Url.Action("FindBook", "Search")',
+				type: 'POST',
+				data: { keyword: keyword },
+				success: function (result) {
+					console.log('AJAX Success:', result); // Log the result to see if it's getting data
+					$("#records_table").html(result);
+				},
+				error: function (error) {
+					console.error('AJAX Error:', error); // Log any errors
+				}
+			});
+		});
+    </script>
+}

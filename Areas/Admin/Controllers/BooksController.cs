@@ -8,6 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using DHungBooks.Data;
 using DHungBooks.Models;
 using PagedList.Core;
+using Azure;
+using DHungBooks.Helper;
+using DHungBooks.Extensions;
+using AspNetCoreHero.ToastNotification.Abstractions;
+using AspNetCoreHero.ToastNotification.Notyf;
+
 
 namespace DHungBooks.Areas.Admin.Controllers
 {
@@ -15,27 +21,54 @@ namespace DHungBooks.Areas.Admin.Controllers
     public class BooksController : Controller
     {
         private readonly NguyenDuongHungBookContext _context;
+        public INotyfService _notyfService { get; }
+        public dynamic CaId { get; private set; }
 
-        public BooksController(NguyenDuongHungBookContext context)
+        public BooksController(NguyenDuongHungBookContext context, INotyfService notyfService)
         {
             _context = context;
+            _notyfService = notyfService;
         }
 
         // GET: Admin/Books
-        public async Task<IActionResult> Index(int? page)
+        public IActionResult Index(int page = 1, int CatID = 0)
         {
-            var pageNumber = page == null || page <= 0 ? 1 : page.Value;
+            var pageNumber = page;
             var pageSize = 20;
-            var lsBook = _context.Books
-                .AsNoTracking()
-                .Include(x => x.Ca)
-                .OrderByDescending(x => x.BookId);
-            PagedList<Book> models = new PagedList<Book>(lsBook, pageNumber, pageSize);
 
+            List<Book> IsBook = new List<Book>();
+
+            if (CatID != 0)
+            {
+                IsBook = _context.Books
+                    .AsNoTracking()
+                    .Where(x=>x.CaId == CatID)
+                    .Include(x =>x.Ca)
+                    .OrderByDescending(x => x.BookId).ToList();
+            }
+            else
+            {
+                IsBook = _context.Books
+                    .AsNoTracking()
+                    .Include(x => x.Ca)
+                    .OrderByDescending(x => x.BookId).ToList();
+            }
+
+            PagedList<Book> models = new PagedList<Book>(IsBook.AsQueryable(), pageNumber, pageSize);
+            ViewBag.CurrentCateID = CatID;
             ViewBag.CurrentPage = pageNumber;
-
-            ViewData["CaId"] = new SelectList(_context.Categories, "CaId", "CaName");
+            ViewData["DanhMuc"] = new SelectList(_context.Categories, "CaId", "CaName", CatID);
             return View(models);
+        }
+        public IActionResult Filtter(int CatID = 0)
+        {
+            var url = $"/Admin/Books?CatID={CatID}";
+            if (CatID == 0)
+            {
+                url = $"/Admin/Books";
+            }
+
+            return Json(new { status = "success", redirectUrl = url });
         }
 
         // GET: Admin/Books/Details/5
@@ -69,12 +102,28 @@ namespace DHungBooks.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BookId,BookName,ShortDesc,Description,CaId,Price,Discount,Thumb,DateCreated,DateModified,BestSellers,HomeFlag,Active,Tags,Title,Alias,MetaDesc,MetaKey,UnitslnStock")] Book book)
+        public async Task<IActionResult> Create([Bind("BookId,BookName,ShortDesc,Description,CaId,Price,Discount,Thumb,DateCreated,DateModified,BestSellers,HomeFlag,Active,Tags,Title,Alias,MetaDesc,MetaKey,UnitslnStock")] Book book, Microsoft.AspNetCore.Http.IFormFile fThumb)
         {
             if (ModelState.IsValid)
             {
+                book.BookName = Ext.ToTitleCase(book.BookName);
+                if (fThumb != null)
+                {
+                    string extension = Path.GetExtension(fThumb.FileName);
+                    string image = Ext.ToUrlFriendly(book.BookName) + extension;
+                    book.Thumb = await Utilities.UploadFile(fThumb, @"book", image.ToLower());
+                }
+                if (string.IsNullOrEmpty(book.Thumb))
+                {
+                    book.Thumb = "default.jpg";
+                }
+                book.Alias = Ext.ToUrlFriendly(book.BookName);
+                book.DateModified = DateTime.Now;
+                book.DateCreated = DateTime.Now;
+
                 _context.Add(book);
                 await _context.SaveChangesAsync();
+                _notyfService.Success("Thêm sản phẩm thành công");
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CaId"] = new SelectList(_context.Categories, "CaId", "CaName", book.CaId);
@@ -103,7 +152,7 @@ namespace DHungBooks.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BookId,BookName,ShortDesc,Description,CaId,Price,Discount,Thumb,DateCreated,DateModified,BestSellers,HomeFlag,Active,Tags,Title,Alias,MetaDesc,MetaKey,UnitslnStock")] Book book)
+        public async Task<IActionResult> Edit(int id, [Bind("BookId,BookName,ShortDesc,Description,CaId,Price,Discount,Thumb,DateCreated,DateModified,BestSellers,HomeFlag,Active,Tags,Title,Alias,MetaDesc,MetaKey,UnitslnStock")] Book book, Microsoft.AspNetCore.Http.IFormFile fThumb)
         {
             if (id != book.BookId)
             {
@@ -114,7 +163,19 @@ namespace DHungBooks.Areas.Admin.Controllers
             {
                 try
                 {
+                    book.BookName = Ext.ToTitleCase(book.BookName);
+                    if (fThumb != null)
+                    {
+                        string extension = Path.GetExtension(fThumb.FileName);
+                        string image = Ext.ToUrlFriendly(book.BookName) + extension;
+                        book.Thumb = await Utilities.UploadFile(fThumb, @"book", image.ToLower());
+                    }
+                    if (string.IsNullOrEmpty(book.Thumb)) book.Thumb = "default.jpg";
+                    book.Alias = Ext.ToUrlFriendly(book.BookName);
+                    book.DateModified = DateTime.Now;
+
                     _context.Update(book);
+                    _notyfService.Success("Lưu thành công");
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -169,6 +230,7 @@ namespace DHungBooks.Areas.Admin.Controllers
             }
             
             await _context.SaveChangesAsync();
+            _notyfService.Success("Xóa thành công");
             return RedirectToAction(nameof(Index));
         }
 

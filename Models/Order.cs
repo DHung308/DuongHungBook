@@ -25,6 +25,8 @@ public partial class Order
 
     public string? Note { get; set; }
 
+    public decimal? TotalMoney { get; set; }
+
     public virtual Customer Customer { get; set; } = null!;
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();

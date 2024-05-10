@@ -1,108 +1,91 @@
-﻿@model IEnumerable<DHungBooks.Models.Category>
-
+﻿@using PagedList.Core.Mvc;
+@model PagedList.Core.IPagedList<DHungBooks.Models.Category>
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+	ViewData["Title"] = "Danh mục sản phẩm - Page: " + ViewBag.CurrentPage;
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Index</h1>
+<div class="page-header">
+	<div class="header-sub-title">
+		<nav class="breadcrumb breadcrumb-dash">
+			<a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+			<span class="breadcrumb-item active">Danh mục sản phẩm: Trang @ViewBag.CurrentPage</span>
+		</nav>
+	</div>
+</div>
+<div class="card">
+	<div class="card-body">
+		<div class="text-right">
+			<a class="btn btn-primary" asp-area="Admin" asp-controller="Categories" asp-action="Create">
+				<i class="anticon anticon-plus-circle m-r-5"></i>
+				<span>Thêm danh mục</span>
+			</a>
+		</div>
+		<div class="table-responsive">
+			<table class="table table-hover e-commerce-table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Tên danh mục</th>
+						<th>Sắp xếp</th>
+						<th>Trạng thái</th>
+						<th>#</th>
+					</tr>
+				</thead>
+				<tbody>
+					@if (Model != null)
+					{
+						foreach (var item in Model)
+						{
+							<tr>
+								<td>
+									@item.CaId
+								</td>
+								<td>
+									@item.CaName
+								</td>
+								<td>
+									@item.Ordering
+								</td>
+								<td>
+									@if (item.Published == true)
+									{
+										<div class="d-flex alignk-items-center">
+											<div class="badge badge-success badge-dot m-r-10"></div>
+											<div>Hiển thị</div>
+										</div>
+									}
+									else
+									{
+										<div class="d-flex align-items-center">
+											<div class="badge badge-warning badge-dot m-r-10"></div>
+											<div>Concealed</div>
+										</div>
+									}
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CaName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ParentId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Levels)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ordering)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Published)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Thumb)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Alias)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MetaDesc)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MetaKey)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cover)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SchemaMarkup)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CaName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ParentId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Levels)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ordering)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Published)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Thumb)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Alias)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MetaDesc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MetaKey)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cover)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SchemaMarkup)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CaId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CaId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CaId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+								</td>
+								<td>
+									<a asp-action="Edit" asp-route-id="@item.CaId" class="btn btn-warning m-r-5">Sửa</a>
+									<a asp-action="Details" asp-route-id="@item.CaId" class="btn btn-info m-r-5">Xem</a>
+									<a asp-action="Delete" asp-route-id="@item.CaId" class="btn btn-danger m-r-5">Xóa</a>
+
+								</td>
+							</tr>
+
+						}
+
+					}
+				</tbody>
+			</table>
+			<div style="position: absolute; right: 0;">
+				<div style="right:0" aria-label="Page navigation example">
+					<ul class="pagination">
+						<pager class="page-container" list="@Model" asp-area="Admin" asp-controller="Categories" asp-action="Index">
+						</pager>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

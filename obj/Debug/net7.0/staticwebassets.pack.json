@@ -3097,12 +3097,336 @@
       "PackagePath": "staticwebassets\\Adminassets\\vendors\\select2\\select2x2.png"
     },
     {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\css\\ajax-loader.gif",
+      "PackagePath": "staticwebassets\\assets\\css\\ajax-loader.gif"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\css\\normalize.css",
+      "PackagePath": "staticwebassets\\assets\\css\\normalize.css"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\css\\vendor.css",
+      "PackagePath": "staticwebassets\\assets\\css\\vendor.css"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\icomoon\\Read Me.txt",
+      "PackagePath": "staticwebassets\\assets\\icomoon\\Read Me.txt"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\icomoon\\fonts\\icomoon.eot",
+      "PackagePath": "staticwebassets\\assets\\icomoon\\fonts\\icomoon.eot"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\icomoon\\fonts\\icomoon.svg",
+      "PackagePath": "staticwebassets\\assets\\icomoon\\fonts\\icomoon.svg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\icomoon\\fonts\\icomoon.ttf",
+      "PackagePath": "staticwebassets\\assets\\icomoon\\fonts\\icomoon.ttf"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\icomoon\\fonts\\icomoon.woff",
+      "PackagePath": "staticwebassets\\assets\\icomoon\\fonts\\icomoon.woff"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\icomoon\\icomoon.css",
+      "PackagePath": "staticwebassets\\assets\\icomoon\\icomoon.css"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\icomoon\\selection.json",
+      "PackagePath": "staticwebassets\\assets\\icomoon\\selection.json"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\app-store.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\app-store.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\banner.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\banner.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\chocolat\\close.png",
+      "PackagePath": "staticwebassets\\assets\\images\\chocolat\\close.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\chocolat\\fullscreen-black.png",
+      "PackagePath": "staticwebassets\\assets\\images\\chocolat\\fullscreen-black.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\chocolat\\fullscreen.png",
+      "PackagePath": "staticwebassets\\assets\\images\\chocolat\\fullscreen.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\chocolat\\left.png",
+      "PackagePath": "staticwebassets\\assets\\images\\chocolat\\left.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\chocolat\\loader.gif",
+      "PackagePath": "staticwebassets\\assets\\images\\chocolat\\loader.gif"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\chocolat\\right.png",
+      "PackagePath": "staticwebassets\\assets\\images\\chocolat\\right.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\client-image1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\client-image1.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\client-image2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\client-image2.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\client-image3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\client-image3.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\client-image4.png",
+      "PackagePath": "staticwebassets\\assets\\images\\client-image4.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\client-image5.png",
+      "PackagePath": "staticwebassets\\assets\\images\\client-image5.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\curly-divider.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\curly-divider.svg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\default.png",
+      "PackagePath": "staticwebassets\\assets\\images\\default.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\device.png",
+      "PackagePath": "staticwebassets\\assets\\images\\device.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\google-play.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\google-play.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\item.png",
+      "PackagePath": "staticwebassets\\assets\\images\\item.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\item1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\item1.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\item3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\item3.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\item4.png",
+      "PackagePath": "staticwebassets\\assets\\images\\item4.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\item5.png",
+      "PackagePath": "staticwebassets\\assets\\images\\item5.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\leaf.png",
+      "PackagePath": "staticwebassets\\assets\\images\\leaf.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\main-banner1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\main-banner1.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\main-banner2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\main-banner2.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\main-logo.png",
+      "PackagePath": "staticwebassets\\assets\\images\\main-logo.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\ns-arrow-right.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\ns-arrow-right.svg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\pattern1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\pattern1.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\pattern2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\pattern2.png"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\post-img1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\post-img1.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\post-img2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\post-img2.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\post-img3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\post-img3.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\product-item1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-item1.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\product-item2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-item2.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\product-item3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-item3.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\product-item4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-item4.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\product-item5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-item5.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\product-item6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-item6.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\product-item7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-item7.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\product-item8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-item8.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\single-image.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\single-image.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\tab-item1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\tab-item1.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\tab-item2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\tab-item2.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\tab-item3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\tab-item3.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\tab-item4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\tab-item4.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\tab-item5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\tab-item5.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\tab-item6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\tab-item6.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\tab-item7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\tab-item7.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\tab-item8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\tab-item8.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\team-member2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team-member2.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\team-member3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team-member3.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\team-member5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team-member5.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\images\\team-member7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team-member7.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\js\\jquery-1.11.0.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery-1.11.0.min.js"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\js\\modernizr.js",
+      "PackagePath": "staticwebassets\\assets\\js\\modernizr.js"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\js\\plugins.js",
+      "PackagePath": "staticwebassets\\assets\\js\\plugins.js"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\js\\script.js",
+      "PackagePath": "staticwebassets\\assets\\js\\script.js"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\js\\slideNav.js",
+      "PackagePath": "staticwebassets\\assets\\js\\slideNav.js"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\assets\\js\\slideNav.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\slideNav.min.js"
+    },
+    {
       "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\images\\book\\am-tre-o-ai-duong-en.jpg",
+      "PackagePath": "staticwebassets\\images\\book\\am-tre-o-ai-duong-en.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\images\\book\\am-tre-o-ay-ai-duong-en.jpg",
+      "PackagePath": "staticwebassets\\images\\book\\am-tre-o-ay-ai-duong-en.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\images\\book\\mac-ke-thien-ha.jpg",
+      "PackagePath": "staticwebassets\\images\\book\\mac-ke-thien-ha.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\images\\book\\tam-the-1.jpg",
+      "PackagePath": "staticwebassets\\images\\book\\tam-the-1.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\images\\book\\the-four--tu-ai-quyen-luc.jpg",
+      "PackagePath": "staticwebassets\\images\\book\\the-four--tu-ai-quyen-luc.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\images\\book\\thuat-thao-tung--goc-toi-an-sau-moi-cau-noi.jpg",
+      "PackagePath": "staticwebassets\\images\\book\\thuat-thao-tung--goc-toi-an-sau-moi-cau-noi.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\images\\book\\yeu-nhung-ieu-khong-hoan-hao.jpg",
+      "PackagePath": "staticwebassets\\images\\book\\yeu-nhung-ieu-khong-hoan-hao.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\images\\categories\\tam-ly--ky-nang-song.jpg",
+      "PackagePath": "staticwebassets\\images\\categories\\tam-ly--ky-nang-song.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\images\\categories\\tieu-su--hoi-ky.jpg",
+      "PackagePath": "staticwebassets\\images\\categories\\tieu-su--hoi-ky.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\images\\categories\\van-hoc.jpg",
+      "PackagePath": "staticwebassets\\images\\categories\\van-hoc.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\images\\pages\\ammmmmmn.jpg",
+      "PackagePath": "staticwebassets\\images\\pages\\ammmmmmn.jpg"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\images\\pages\\trang-moi-nay.jpg",
+      "PackagePath": "staticwebassets\\images\\pages\\trang-moi-nay.jpg"
     },
     {
       "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\js\\site.js",
@@ -3335,6 +3659,18 @@
     {
       "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\style.css",
+      "PackagePath": "staticwebassets\\style.css"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\style2.css",
+      "PackagePath": "staticwebassets\\style2.css"
+    },
+    {
+      "Id": "E:\\DHungBooks\\DHungBooks\\wwwroot\\styles.html",
+      "PackagePath": "staticwebassets\\styles.html"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.DHungBooks.Microsoft.AspNetCore.StaticWebAssets.props",

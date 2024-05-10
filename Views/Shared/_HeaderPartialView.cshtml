@@ -1,0 +1,109 @@
+﻿<div class="top-content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="social-links">
+					<ul>
+						<li>
+							<a href="#"><i class="icon icon-facebook"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="icon icon-twitter"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="icon icon-youtube-play"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="icon icon-behance-square"></i></a>
+						</li>
+					</ul>
+				</div><!--social-links-->
+			</div>
+			<div class="col-md-6">
+				<div class="right-element">
+					<a href="tai-khoan-cua-toi.html" class="user-account for-buy"><i class="icon icon-user"></i><span>Tài khoản</span></a>
+					<a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Giỏ hàng:(0đ)</span></a>
+
+					<div class="action-menu">
+
+						<div class="search-bar">
+							<a href="#" class="search-button search-toggle" data-selector="#header-wrap">
+								<i class="icon icon-search"></i>
+							</a>
+							<form role="search" method="get" class="search-box">
+								<input class="search-field text search-input" placeholder="Search" type="search">
+							</form>
+						</div>
+					</div>
+
+				</div><!--top-right-->
+			</div>
+
+		</div>
+	</div>
+</div><!--top-content-->
+<header id="header">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-2">
+				<div class="main-logo">
+					<a href="/"><img src="~/assets/images/main-logo.png" alt="logo"></a>
+				</div>
+
+			</div>
+
+			<div class="col-md-10">
+
+				<nav id="navbar">
+					<div class="main-menu stellarnav">
+						<ul class="menu-list">
+							<li class="menu-item active"><a href="/" data-effect="Home">Home</a></li>
+							<li class="menu-item"><a href="#about" class="nav-link" data-effect="About">Thông tin</a></li>
+							<li class="menu-item has-sub">
+								<a href="#pages" class="nav-link" data-effect="Pages">Danh mục</a>
+								<style>
+									/* CSS để thêm hiệu ứng khi hover qua các liên kết */
+									ul.nav-menu li:hover {
+										background-color: #f0f0f0; /* Màu nền khi di chuột qua */
+									}
+
+										ul.nav-menu li:hover a {
+											color: #DCAB61; /* Màu chữ khi di chuột qua */
+										}
+								</style>
+
+								<ul class="nav-menu">
+									<li><a href="/van-hoc">Văn học</a></li>
+									<li><a href="/kinh-te">Kinh tế</a></li>
+									<li><a href="/thieu-nhi">Thiếu nhi</a></li>
+									<li><a href="/truyen">Truyện</a></li>
+								</ul>
+							</li>
+							<style>
+								/* Hiệu ứng khi di chuột qua liên kết */
+								.nav-menu li:hover a {
+									color: #DCAB61; /* Màu chữ khi di chuột qua */
+								}
+							</style>
+							<li><a asp-controller="Book" asp-action="Index">Cửa hàng</a></li>
+							<li><a asp-controller="Home" asp-action="Contact">Liên hệ</a></li>
+						</ul>
+
+						<div class="hamburger">
+							<span class="bar"></span>
+							<span class="bar"></span>
+							<span class="bar"></span>
+						</div>
+
+					</div>
+				</nav>
+
+			</div>
+
+		</div>
+	</div>
+</header>
+
+
+    </div><!--header-wrap-->

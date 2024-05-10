@@ -1,0 +1,111 @@
+﻿@model DHungBooks.ModelViews.RegisterVM
+
+@{
+    ViewData["Title"] = "DangKyTaiKhoan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="main-content">
+    <div class="login-register-area section-space-y-axis-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 pt-10 pt-lg-0 mx-auto">
+                    <!-- Sử dụng lớp mx-auto để căn giữa form -->
+                    <form asp-action="DangKyTaiKhoan" class="d-flex justify-content-center align-items-center h-100">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="login-form">
+                            <h4 class="login-title">Đăng kí tài khoản</h4>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Họ và tên</label>
+                                    <input type="text" asp-for="FullName" placeholder="Họ và tên">
+                                    <span asp-validation-for="FullName" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Địa chỉ Email</label>
+                                    <input type="email" asp-for="Email" placeholder="Địa chỉ Email">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Số điện thoại</label>
+                                    <input type="tel" asp-for="Phone" placeholder="Số điện thoại">
+                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Mật khẩu</label>
+                                    <input type="password" asp-for="Password" placeholder="Mật khẩu">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Nhập lại mật khẩu</label>
+                                    <input type="password" asp-for="ConfirmPassword" placeholder="Nhập lại mật khẩu">
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-custom-size lg-size btn-secondary btn-primary-hover rounded-0">Đăng kí tài khoản</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<style>
+    /* Định dạng cho phần tử form */
+    .login-form {
+        background-color: #f9f9f9;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Định dạng cho tiêu đề của form */
+    .login-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* Định dạng cho các trường nhập */
+    .login-form label {
+        font-weight: bold;
+    }
+
+    .login-form input[type="text"],
+    .login-form input[type="email"],
+    .login-form input[type="tel"],
+    .login-form input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    /* Định dạng cho nút đăng ký */
+    .login-form button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: #DBA85B;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        .login-form button:hover {
+            background-color: #DBA85B;
+        }
+
+    /* Định dạng cho các thông báo lỗi */
+    .text-danger {
+        color: red;
+        font-size: 12px;
+    }
+</style>
+
+

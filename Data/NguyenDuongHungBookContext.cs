@@ -99,6 +99,7 @@ public partial class NguyenDuongHungBookContext : DbContext
             entity.Property(e => e.PaymentDate).HasColumnType("datetime");
             entity.Property(e => e.PaymentId).HasColumnName("PaymentID");
             entity.Property(e => e.ShipDate).HasColumnType("datetime");
+            entity.Property(e => e.TotalMoney).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.TransactStatusId).HasColumnName("TransactStatusID");
 
             entity.HasOne(d => d.Customer).WithMany(p => p.Orders)

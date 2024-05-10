@@ -1,0 +1,106 @@
+﻿@model DHungBooks.Models.Page
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin1" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <a class="breadcrumb-item" asp-area="Admin" asp-controller="Pages" asp-action="Index">Danh sách page</a>
+            <span class="breadcrumb-item active">Thông tin: @Model.PageName</span>
+        </nav>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Thông tin page</h4>
+        <div class="table-responsive">
+
+            <input type="hidden" asp-for="PageId" />
+            <table class="product-info-table m-t-20">
+                <tbody>
+                    <tr>
+                        <td>ID:</td>
+                        <td class="text-dark font-weight-semibold">@Model.PageId</td>
+                    </tr>
+                    <tr>
+                        <td>Tên page:</td>
+                        <td>@Model.PageName</td>
+                    </tr>
+                    <tr>
+                        <td>Tiêu đề</td>
+                        <td>@Model.Title</td>
+                    </tr>
+                    <tr>
+                        <td>Alias</td>
+                        <td>@Model.Alias</td>
+                    </tr>
+                    <tr>
+                        <td>Nội dung:</td>
+                        <td>@Model.Contents</td>
+                    </tr>
+
+                    <tr>
+                        <td>Ảnh:</td>
+                        <td><img width="200" height="200" src="~/images/pages/@Model.Thumb" alt="@Model.Title" /></td>
+
+                    </tr>
+                    <tr>
+                        <td>Publish: </td>
+                        <td>
+                            @if (Model.Published)
+                            {
+                                <div class="switch m-r-10">
+                                    <input type="checkbox" id="switch-1" checked="" disabled>
+                                    <label for="switch-1"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="switch m-r-10">
+                                    <input type="checkbox" id="switch-2" disabled>
+                                    <label for="switch-2"></label>
+                                </div>
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Meta Key</td>
+                        <td>@Model.MetaKey</td>
+                    </tr>
+                    <tr>
+                        <td>Meta Description</td>
+                        <td>@Model.MetaDesc</td>
+                    </tr>
+                    <tr>
+                        <td>Ordering:</td>
+                        <td>@Model.Ordering</td>
+                    </tr>
+                    <tr>
+                        <td>Xác nhận xóa </td>
+                        <td>
+                            <form asp-asp-controller="AdminCategories_63135901" asp-action="Delete" asp-asp-route-id="@Model.PageId">
+                                <input type="hidden" asp-for="PageId" />
+                                <input type="submit" value="Xác nhận xóa" class="btn btn-danger" />
+                            </form>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="PageId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Quay lại</a>
+    </form>
+</div>

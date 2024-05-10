@@ -5,96 +5,89 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Delete</h1>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Category</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CaName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CaName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ParentId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ParentId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Levels)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Levels)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ordering)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ordering)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Published)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Published)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Thumb)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Thumb)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Alias)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Alias)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MetaDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MetaDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MetaKey)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MetaKey)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cover)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cover)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SchemaMarkup)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SchemaMarkup)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="CaId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <a class="breadcrumb-item" asp-area="Admin" asp-controller="Categories" asp-action="Index">Danh sách danh mục</a>
+            <span class="breadcrumb-item active">Xóa danh mục: @Model.CaName</span>
+        </nav>
+    </div>
 </div>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Thông tin danh mục</h4>
+        <div class="table-responsive">
+            <table class="product-info-table m-t-20">
+                <tbody>
+                    <tr>
+                        <td>ID:</td>
+                        <td class="text-dark font-weight-semibold">@Model.CaId</td>
+                    </tr>
+                    <tr>
+                        <td>Tên danh mục:</td>
+                        <td>@Model.CaName</td>
+                    </tr>
+                    <tr>
+                        <td>Alias:</td>
+                        <td>@Model.Alias</td>
+                    </tr>
+                    <tr>
+                        <td>Mô tả:</td>
+                        <td>@Model.Description</td>
+                    </tr>
+
+
+                    <tr>
+                        <td>Ảnh:</td>
+                        <td><img width="200" height="200" src="~/images/categories/@Model.Thumb" alt="@Model.Title" /></td>
+
+                    </tr>
+                    <tr>
+                        <td>Publish: </td>
+                        <td>
+                            @if (Model.Published)
+                            {
+                                <div class="switch m-r-10">
+                                    <input type="checkbox" id="switch-1" checked="" disabled>
+                                    <label for="switch-1"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="switch m-r-10">
+                                    <input type="checkbox" id="switch-2" disabled>
+                                    <label for="switch-2"></label>
+                                </div>
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Meta Key</td>
+                        <td>@Model.MetaKey</td>
+                    </tr>
+                    <tr>
+                        <td>Meta Description</td>
+                        <td>@Model.MetaDesc</td>
+                    </tr>
+                    <tr>
+                        <td>Ordering:</td>
+                        <td>@Model.Ordering</td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                        <td>
+                            <form asp-asp-controller="Categories" asp-action="Delete" asp-asp-route-id="@Model.CaId">
+                                <input type="hidden" asp-for="CaId" />
+                                <input type="submit" value="Xác nhận xóa" class="btn btn-danger" />
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+ 
